@@ -64,6 +64,27 @@ const PRODUCTS = {
       "widget_horizontal_padding": "0%"
     }
   },
+  "5-page-brown-photobooth": {
+    "name": "5 Page Brown Photobooth",
+    "ratio": 4,
+    "style": {
+      "language": "en",
+      "font": "Xanh Mono",
+      "show_name": "false",
+      "name": "My countdown",
+      "name_color": "#995c19",
+      "show_units": "true",
+      "units": "odhms",
+      "digits_color": "#cdbeaf",
+      "last_unit_color": "#cdbeaf",
+      "layout": "vertical",
+      "bg_color": "rgba(255,255,255,0)",
+      "border_color": "#e6e6e6",
+      "border_width": "0",
+      "widget_height": "25%",
+      "widget_horizontal_padding": "0%"
+    }
+  },
   "5-page-cream-photobooth": {
     "name": "5 Page Cream Photobooth",
     "ratio": 4,
