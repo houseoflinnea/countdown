@@ -106,6 +106,27 @@ const PRODUCTS = {
       "widget_horizontal_padding": "0%"
     }
   },
+  "3-page-sage-green-envelope-wax-seal": {
+    "name": "3 Page Sage Green Envelope Wax Seal",
+    "ratio": 4,
+    "style": {
+      "language": "en",
+      "font": "Times New Roman",
+      "show_name": "false",
+      "name": "My countdown",
+      "name_color": "#995c19",
+      "show_units": "true",
+      "units": "dhms",
+      "digits_color": "#995c19",
+      "last_unit_color": "#995c19",
+      "layout": "vertical",
+      "bg_color": "rgba(255,255,255,0)",
+      "border_color": "#e6e6e6",
+      "border_width": "0",
+      "widget_height": "25%",
+      "widget_horizontal_padding": "0%"
+    }
+  },
   "5-page-blue-photobooth": {
     "name": "5 Page Blue Photobooth",
     "ratio": 4,
