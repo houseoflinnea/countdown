@@ -1,0 +1,293 @@
+/* House of Linnea: logo rengi (pas kahvesi), kağıt zemin, banner'daki yağlı boya fırça dokusu.
+   Başlıklar dahil tüm yazılar sans serif: Alegreya Sans (OFL, assets/fonts/OFL.txt), Latin alt kümesi. */
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("assets/fonts/alegreya-sans-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("assets/fonts/alegreya-sans-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("assets/fonts/alegreya-sans-medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --rust: #7f3c28;
+  --rust-deep: #622d1d;
+  --paper: #faf0e2;
+  --ink: #4b2c22;
+  --muted: #8a6858;
+  --line: rgba(127, 60, 40, 0.16);
+  --warn: #9a5b12;
+  --sans: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.5 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: lining-nums; /* Alegreya'nın eski stil rakamları tarih/saatte dalgalı duruyor */
+}
+/* Fırça dokusu sabit arka plan. background-attachment: fixed iOS'ta çalışmadığı için ayrı katman. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(250, 244, 236, 0.3), rgba(250, 244, 236, 0.6)),
+    url("assets/brush.jpg") center / cover no-repeat;
+}
+
+main { max-width: 680px; margin: 0 auto; padding: 44px 20px 64px; }
+
+/* --- Üst kısım */
+.head { text-align: center; margin-bottom: 30px; }
+.logo { display: block; width: 72px; height: auto; margin: 0 auto 10px; }
+.wordmark { display: block; width: 190px; height: auto; margin: 0 auto; }
+h1 {
+  margin: 14px 0 2px;
+  font-size: clamp(28px, 6.4vw, 38px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.product { margin: 0; font-size: 19px; font-style: italic; color: var(--rust); }
+
+/* --- Kartlar */
+.card {
+  /* Sarı kağıt dokusu yerine yarı saydam: arkadaki fırça dokusu hafifçe görünür */
+  background: rgba(255, 253, 250, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: 0 12px 34px rgba(98, 45, 29, 0.07);
+}
+.card + .card { margin-top: 16px; }
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.step b {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: rgba(127, 60, 40, 0.8); /* logo rengi, biraz saydam */
+  color: var(--paper);
+  font: 500 16px/1 var(--sans);
+  font-variant-numeric: lining-nums tabular-nums;
+  padding-top: 1px; /* Alegreya'nın rakamları satır kutusunda ~0,5px yukarıda duruyor */
+}
+
+/* --- Form alanları */
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fields .wide { grid-column: 1 / -1; }
+.fields > div { min-width: 0; }
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 14px;
+  font: inherit;
+  font-variant-numeric: lining-nums;
+  font-size: 16px; /* 16px altı iPhone'da odaklanınca sayfayı büyütür */
+  color: var(--ink);
+  background: #fffdf9;
+  border: 1px solid rgba(127, 60, 40, 0.22);
+  border-radius: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+input[type="date"], input[type="time"] { line-height: 22px; }
+input:focus { outline: 3px solid rgba(127, 60, 40, 0.18); border-color: var(--rust); }
+input::placeholder { color: #b39a8c; }
+
+.hint { margin-top: 7px; min-height: 20px; font-size: 13.5px; color: var(--muted); }
+.hint.warn { color: var(--warn); }
+#date-hint:empty { display: none; }
+
+/* --- Şehir seçici */
+.zp { position: relative; }
+.zp input { padding-right: 48px; }
+.zp-toggle {
+  font-family: inherit;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 16px;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.zp-toggle:hover { background: rgba(127, 60, 40, 0.06); }
+/* Fonttan bağımsız ince ok */
+.zp-toggle::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: -4px auto 0;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+.zp-list {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: min(340px, 50vh);
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  list-style: none;
+  background: #fffdf9;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(98, 45, 29, 0.16);
+}
+.zp-group {
+  padding: 10px 10px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.zp-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.zp-option.active, .zp-option:hover { background: rgba(127, 60, 40, 0.08); }
+.zp-option[aria-selected="true"] .zp-name { color: var(--rust); }
+.zp-name { font-weight: 500; overflow-wrap: anywhere; }
+.zp-detail { flex: none; font-size: 13px; color: var(--muted); text-align: right; }
+
+/* --- Önizleme */
+.preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 1; /* Canva'daki sayaç kutusuyla aynı oran; min-height verme, dar ekranda genişliği taşırır */
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e9ded2 center / cover no-repeat;
+}
+.preview iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; pointer-events: none; }
+/* TickCounter sağ üst köşeye 24px logo koyuyor. Önizlemenin kendi arka planından bir kopya,
+   sadece o köşe görünecek şekilde kırpılıp iframe'in üstüne biniyor; aynı kutu olduğu için birebir hizalı. */
+.preview-cover {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  clip-path: inset(0 0 calc(100% - 24px) calc(100% - 24px)); /* logo tam 24x24 */
+  pointer-events: none;
+  z-index: 1;
+}
+.preview .empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+.preview-note { margin-top: 9px; font-size: 13.5px; color: var(--muted); }
+
+/* --- Kopyalama */
+.copy-row { display: flex; flex-wrap: wrap; gap: 10px; }
+#link { flex: 1 1 240px; font-size: 14px; color: var(--muted); text-overflow: ellipsis; }
+#copy {
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding: 0 24px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  background: var(--rust);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+#copy:hover { background: var(--rust-deep); }
+#copy:focus-visible { outline: 3px solid rgba(127, 60, 40, 0.3); outline-offset: 2px; }
+#copy:disabled { opacity: 0.4; cursor: not-allowed; }
+#copy.done { background: var(--rust-deep); }
+
+ol.canva { margin: 14px 0 0; padding-left: 20px; color: var(--ink); }
+ol.canva li { margin: 5px 0; }
+ol.canva li::marker { color: var(--rust); font-variant-numeric: lining-nums; }
+
+.missing { text-align: center; padding: 44px 22px; }
+
+/* --- Telefon */
+@media (max-width: 560px) {
+  main { padding: 30px 14px 48px; }
+  .logo { width: 60px; }
+  .wordmark { width: 170px; }
+  .card { padding: 20px 16px; border-radius: 14px; }
+  .fields { grid-template-columns: 1fr; gap: 14px; }
+  .step { font-size: 19px; }
+  #copy { flex: 1 1 100%; }
+  .zp-detail { font-size: 12px; }
+}

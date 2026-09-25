@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Countdown Setup · House of Linnea</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; frame-src https://www.tickcounter.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="style.css?v=4962be5908">
+</head>
+<body>
+<main>
+  <header class="head">
+    <img class="logo" src="assets/logo.png" width="194" height="300" alt="">
+    <img class="wordmark" src="assets/wordmark.png" width="647" height="140" alt="House of Linnea">
+    <h1>Countdown Setup</h1>
+    <p class="product" id="product-name"></p>
+  </header>
+
+  <section id="app" hidden>
+    <div class="card">
+      <h2 class="step"><b>1</b> Your Wedding Moment</h2>
+      <div class="fields">
+        <div>
+          <label for="date">Wedding date</label>
+          <input type="date" id="date" required>
+        </div>
+        <div>
+          <label for="time">Ceremony time</label>
+          <input type="time" id="time" value="16:00" required>
+        </div>
+        <div class="wide">
+          <label for="tz">Wedding location (time zone)</label>
+          <div class="zp">
+            <input id="tz" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="tz-list"
+                   autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search a city or country, e.g. Italy">
+            <button type="button" class="zp-toggle" id="tz-toggle" tabindex="-1" aria-label="Show all locations"></button>
+            <ul class="zp-list" id="tz-list" role="listbox" aria-label="Locations" hidden></ul>
+          </div>
+          <div class="hint" id="tz-hint">Type your venue's city or country. If it isn't listed, pick a nearby city in the same country.</div>
+        </div>
+      </div>
+      <div class="hint" id="date-hint"></div>
+    </div>
+
+    <div class="card">
+      <h2 class="step"><b>2</b> Preview</h2>
+      <div class="preview" id="preview">
+        <div class="preview-cover" id="preview-cover" aria-hidden="true"></div>
+        <div class="empty" id="preview-empty">Choose your wedding date to see your countdown</div>
+      </div>
+      <div class="preview-note">This is exactly how the countdown will look on your website.</div>
+    </div>
+
+    <div class="card">
+      <h2 class="step"><b>3</b> Copy Your Link</h2>
+      <div class="copy-row">
+        <input id="link" readonly placeholder="Your link will appear here" aria-label="Your countdown link">
+        <button id="copy" disabled>Copy my countdown link</button>
+      </div>
+      <ol class="canva">
+        <li>In Canva, click the countdown on your website design.</li>
+        <li>Replace its link with the one you just copied.</li>
+        <li>Publish your website. Done!</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="card missing" id="missing" hidden>
+    <p>We couldn't find your template.<br>Please open the countdown link from your guidebook.</p>
+  </section>
+</main>
+<script src="link.js?v=2c94b95af8"></script>
+<script src="products.js?v=61a3229be8"></script>
+<script src="places.js?v=6db29b00e5"></script>
+<script src="tickcounter-zones.js?v=9884cd2cb1"></script>
+<script src="zone-picker.js?v=e6a03b1953"></script>
+<script src="app.js?v=d357d96df7"></script>
+</body>
+</html>
