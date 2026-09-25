@@ -128,7 +128,7 @@ const PRODUCTS = {
     }
   },
   "3-page-lace-envelope": {
-    "name": "3 Page Lace Envelope",
+    "name": "3 Page Ivory Lace Envelope",
     "ratio": 4,
     "style": {
       "language": "en",
