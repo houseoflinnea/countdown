@@ -127,6 +127,27 @@ const PRODUCTS = {
       "widget_horizontal_padding": "0%"
     }
   },
+  "3-page-lace-envelope": {
+    "name": "3 Page Lace Envelope",
+    "ratio": 4,
+    "style": {
+      "language": "en",
+      "font": "Courier New",
+      "show_name": "false",
+      "name": "To Our Date",
+      "name_color": "#cc988f",
+      "show_units": "true",
+      "units": "dhms",
+      "digits_color": "#cc988f",
+      "last_unit_color": "#cc988f",
+      "layout": "vertical",
+      "bg_color": "rgba(255,255,255,0)",
+      "border_color": "#e6e6e6",
+      "border_width": "0",
+      "widget_height": "25%",
+      "widget_horizontal_padding": "0%"
+    }
+  },
   "3-page-sage-green-envelope-wax-seal": {
     "name": "3 Page Sage Green Envelope Wax Seal",
     "ratio": 4,
