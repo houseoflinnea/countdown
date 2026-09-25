@@ -9,6 +9,8 @@
   document.title = `Countdown Setup · ${product.name} · House of Linnea`;
   $("preview").style.backgroundImage = `url("backgrounds/${slug}.jpg")`;
   if (product.ratio) $("preview").style.aspectRatio = String(product.ratio); // sitedeki sayaç kutusuyla aynı oran
+  // Boş önizleme yazısı sayacın kendi rengini alır: o renk zaten bu ürünün zemininde okunacak şekilde seçilmiş
+  if (product.style.digits_color) $("preview-empty").style.color = product.style.digits_color;
 
   function weddingInstant() {
     const d = $("date").value;
@@ -81,6 +83,7 @@
     const old = box.querySelector("iframe");
     if (old) old.remove();
     $("preview-empty").hidden = !!link;
+    $("preview-cover").hidden = !link; // logo örtüsü sadece sayaç varken gerekli, boşken kenarı çizgi gibi görünüyordu
     if (!link) return;
     const frame = document.createElement("iframe");
     frame.title = "Countdown preview";
