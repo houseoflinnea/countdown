@@ -43,8 +43,8 @@ const PRODUCTS = {
       "widget_horizontal_padding": "0%"
     }
   },
-  "3-page-burgundry-photobooth": {
-    "name": "3 Page Burgundry Photobooth",
+  "3-page-burgundy-photobooth": {
+    "name": "3 Page Burgundy Photobooth",
     "ratio": 4,
     "style": {
       "language": "en",
@@ -211,8 +211,8 @@ const PRODUCTS = {
       "widget_horizontal_padding": "0%"
     }
   },
-  "5-page-burgundry-photobooth": {
-    "name": "5 Page Burgundry Photobooth",
+  "5-page-burgundy-photobooth": {
+    "name": "5 Page Burgundy Photobooth",
     "ratio": 4,
     "style": {
       "language": "en",
