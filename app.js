@@ -78,6 +78,19 @@
     timer = setTimeout(() => renderPreview(link), 350);
   }
 
+  // TickCounter sağ üste 20px logo koyuyor; dar ekranda son rakamın üstüne biniyor ve örtüsü rakamı kesiyordu.
+  // Sayacı k kat büyük çizip küçültünce rakamlar aynı kalır, logo (ve örtüsü) k kat küçülüp rakamların üstündeki boşluğa çekilir.
+  // 600px ve üstünde TickCounter rakam/etiket oranını değiştiriyor; Canva'daki görünümle aynı kalsın diye altında tutuluyor.
+  function fitFrame() {
+    const box = $("preview"), frame = box.querySelector("iframe");
+    if (!frame) return;
+    const k = Math.max(1, Math.min(2, 599 / box.clientWidth));
+    frame.style.width = frame.style.height = `${100 * k}%`;
+    frame.style.transform = `scale(${1 / k})`;
+    box.style.setProperty("--logo", `${Math.ceil(24 / k)}px`);
+  }
+  window.addEventListener("resize", fitFrame);
+
   function renderPreview(link) {
     const box = $("preview");
     const old = box.querySelector("iframe");
@@ -99,6 +112,7 @@
       $("preview-empty").textContent = "Preview unavailable, but your link still works.";
     });
     box.insertBefore(frame, $("preview-cover"));
+    fitFrame();
   }
 
   // --- Kopyalama

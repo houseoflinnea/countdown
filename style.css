@@ -230,14 +230,14 @@ input::placeholder { color: #b39a8c; }
   border-radius: 10px;
   background: #e9ded2 center / cover no-repeat;
 }
-.preview iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; pointer-events: none; }
+.preview iframe { position: absolute; top: 0; left: 0; transform-origin: 0 0; width: 100%; height: 100%; border: 0; background: transparent; pointer-events: none; }
 /* TickCounter sağ üst köşeye 24px logo koyuyor. Önizlemenin kendi arka planından bir kopya,
    sadece o köşe görünecek şekilde kırpılıp iframe'in üstüne biniyor; aynı kutu olduğu için birebir hizalı. */
 .preview-cover {
   position: absolute;
   inset: 0;
   background: inherit;
-  clip-path: inset(0 0 calc(100% - 24px) calc(100% - 24px)); /* logo tam 24x24 */
+  clip-path: inset(0 0 calc(100% - var(--logo, 24px)) calc(100% - var(--logo, 24px))); /* logo 24x24, sayaç küçültülünce o oranda (app.js fitFrame) */
   pointer-events: none;
   z-index: 1;
 }
