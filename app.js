@@ -3,10 +3,22 @@
   const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
   const requested = new URLSearchParams(location.search).get("p");
   // Eski linkler (ör. 3-page-lace-envelope) ALIASES üzerinden güncel ürüne gider
-  const slug = requested && (has(PRODUCTS, requested) ? requested : has(ALIASES, requested) ? ALIASES[requested] : null);
+  const aliases = typeof ALIASES === "object" ? ALIASES : {};
+  const slug = requested && (has(PRODUCTS, requested) ? requested : has(aliases, requested) ? aliases[requested] : null);
   const product = slug ? PRODUCTS[slug] : null;
 
-  if (!product) { $("missing").hidden = false; return; }
+  if (!product) {
+    // GitHub Pages sayfayı 10 dk önbellekte tutabiliyor: yeni eklenen ürün eski sayfada yok görünür.
+    // Bir kez önbelleği atlayarak yeniden yükle; ürün gerçekten yoksa mesajı göster.
+    const url = new URL(location.href);
+    if (requested && !url.searchParams.has("r")) {
+      url.searchParams.set("r", Date.now());
+      location.replace(url);
+      return;
+    }
+    $("missing").hidden = false;
+    return;
+  }
   $("app").hidden = false;
   $("product-name").textContent = product.name;
   document.title = `Countdown Setup · ${product.name} · House of Linnea`;
