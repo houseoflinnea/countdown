@@ -1,7 +1,10 @@
 (function () {
   const $ = (id) => document.getElementById(id);
-  const slug = new URLSearchParams(location.search).get("p");
-  const product = slug && Object.prototype.hasOwnProperty.call(PRODUCTS, slug) ? PRODUCTS[slug] : null;
+  const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+  const requested = new URLSearchParams(location.search).get("p");
+  // Eski linkler (ör. 3-page-lace-envelope) ALIASES üzerinden güncel ürüne gider
+  const slug = requested && (has(PRODUCTS, requested) ? requested : has(ALIASES, requested) ? ALIASES[requested] : null);
+  const product = slug ? PRODUCTS[slug] : null;
 
   if (!product) { $("missing").hidden = false; return; }
   $("app").hidden = false;
