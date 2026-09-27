@@ -1,0 +1,2 @@
+html, body { margin: 0; height: 100%; background: transparent; }
+body { display: grid; place-items: center; font: 400 12vw/1 "Times New Roman", serif; color: #995c19; }
